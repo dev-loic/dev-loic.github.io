@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loïc Saillant · Mobile engineer</title>
+<meta name="description" content="Loïc Saillant, mobile engineer. 7+ years shipping iOS apps used by millions: Wizz, Toongether, CANAL+, Taxis G7.">
+<meta property="og:title" content="Loïc Saillant · Mobile engineer">
+<meta property="og:description" content="7+ years shipping consumer iOS apps. Wizz (200K to 1M+ DAU), Toongether (Lead iOS, gen-AI comics).">
+<meta property="og:image" content="https://dev-loic.github.io/assets/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3f0e8; --paper-2:#e9e5da; --ink:#121212; --muted:#5d5a53; --line:#d3cec1;
+  --accent:#e0451f; --accent-ink:#fff;
+  --serif:"Instrument Serif", Georgia, serif;
+  --sans:"Geist", -apple-system, "Helvetica Neue", sans-serif;
+  --mono:"Geist Mono", ui-monospace, Menlo, monospace;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --paper:#111110; --paper-2:#1b1a18; --ink:#efebe2; --muted:#9b968b; --line:#2e2c28; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+.label{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.top .name{font:500 14px var(--mono);text-decoration:none}
+.top nav{display:flex;gap:22px;align-items:center}
+.top nav a{font-size:14px;text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--paper)!important;text-decoration:none;font:500 14px var(--sans)}
+.btn:hover{background:var(--accent);color:var(--accent-ink)!important}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* hero */
+.hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
+.hero h1{font:400 clamp(48px,8.4vw,112px)/.95 var(--serif);letter-spacing:-.02em;margin:22px 0 0;max-width:13ch}
+.hero h1 em{color:var(--accent)}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;margin-top:48px;align-items:end}
+.hero p.lede{font-size:19px;line-height:1.5;margin:0;max-width:34em}
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts li span:first-child{color:var(--muted)}
+.facts li span:last-child{text-align:right}
+.status{display:inline-flex;align-items:center;gap:8px}
+.status i{width:8px;height:8px;border-radius:50%;background:#2fb75a;box-shadow:0 0 0 4px color-mix(in srgb,#2fb75a 22%,transparent)}
+
+/* work */
+section{padding:96px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:48px}
+.sec-head h2{font:400 clamp(34px,4.4vw,52px)/1 var(--serif);margin:0;letter-spacing:-.01em}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;padding:56px 0;border-top:1px solid var(--line)}
+.case:last-of-type{border-bottom:1px solid var(--line)}
+.case-id{display:flex;align-items:center;gap:14px}
+.case-id img{width:52px;height:52px;border-radius:12px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.case-id h3{font:400 38px/1 var(--serif);margin:0}
+.case-id .role{font-size:14px;color:var(--muted);margin-top:4px}
+.case .pitch{font-size:18px;margin:26px 0 22px;max-width:30em}
+.ledger{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);margin:0 0 26px}
+.ledger div{padding:12px 12px 0 0}
+.ledger b{display:block;font:400 30px/1.05 var(--serif)}
+.ledger span{font-size:12.5px;color:var(--muted);line-height:1.35;display:block;margin-top:4px}
+.case ul{margin:0;padding:0;list-style:none}
+.case li{position:relative;padding:0 0 10px 20px;font-size:15.5px}
+.case li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1px;background:var(--accent)}
+.stack{margin-top:18px;font:13px/1.6 var(--mono);color:var(--muted)}
+.store{display:inline-block;margin-top:18px;font-size:14px;text-underline-offset:3px}
+
+
+/* device + video */
+.devices{display:flex;gap:28px;justify-content:center;align-self:start}
+.device{margin:0}
+.phone{position:relative;width:250px;aspect-ratio:540/1174;border-radius:42px;padding:9px;background:#0d0d0d;
+  box-shadow:inset 0 0 0 2px #2c2c2c,0 0 0 1px #000,0 40px 80px -30px rgba(0,0,0,.55)}
+.phone video,.phone img{display:block;width:100%;height:100%;object-fit:cover;border-radius:33px;background:#000}
+.device figcaption{margin-top:14px;text-align:center;font-size:13px;color:var(--muted);max-width:250px}
+.case.text-only{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.case.text-only .side{padding-top:84px}
+
+/* earlier */
+.earlier{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.earlier article{padding:28px 28px 28px 0;border-right:1px solid var(--line)}
+.earlier article+article{padding-left:28px}
+.earlier article:last-child{border-right:0}
+.earlier .head{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.earlier img{width:36px;height:36px;border-radius:9px}
+.earlier .mono-badge{width:36px;height:36px;border-radius:9px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:500 15px var(--mono)}
+.earlier h4{margin:0;font:600 16px var(--sans)}
+.earlier .when{font-size:13px;color:var(--muted)}
+.earlier p{margin:0;font-size:15px;color:var(--ink)}
+
+/* how */
+.how{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+.how div{padding:22px 0;border-top:1px solid var(--line)}
+.how h4{font:400 26px/1.15 var(--serif);margin:0 0 8px}
+.how p{margin:0;color:var(--muted);font-size:15.5px}
+
+/* agent */
+.agent{background:var(--ink);color:var(--paper);border-radius:28px;padding:64px;display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+.agent .label{color:color-mix(in srgb,var(--paper) 60%,transparent)}
+.agent h2{font:400 clamp(34px,4.2vw,50px)/1.02 var(--serif);margin:16px 0 18px}
+.agent p{color:color-mix(in srgb,var(--paper) 78%,transparent);margin:0 0 14px}
+.term{background:#0a0a0a;border:1px solid #2a2a2a;border-radius:14px;font:13px/1.65 var(--mono);color:#d8d4ca;padding:18px 20px;overflow:auto;align-self:start}
+@media (prefers-color-scheme: dark){ .agent{background:var(--paper-2);color:var(--ink)} .agent p{color:var(--muted)} .agent .label{color:var(--muted)} }
+.term .c{color:#7d796f}.term .k{color:var(--accent)}.term .g{color:#6fcf8a}
+.term .row{white-space:pre}
+
+/* contact */
+.contact{padding:120px 0 80px}
+.contact h2{font:400 clamp(44px,7vw,96px)/.95 var(--serif);margin:0 0 36px;letter-spacing:-.02em}
+.contact h2 a{text-decoration:none;border-bottom:2px solid var(--accent)}
+.contact h2 a:hover{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.links a.ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:15px}
+.links a.ghost:hover{border-color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* reveal */
+.anim .rv:not(.in){opacity:0;transform:translateY(14px)}
+.rv{transition:opacity .7s ease,transform .7s ease}
+
+@media (max-width:900px){
+  .devices{gap:14px}
+  .phone{width:min(250px,calc((100vw - 70px)/2));border-radius:30px;padding:6px}
+  .phone video{border-radius:25px}
+  .case.text-only{grid-template-columns:1fr}
+  .case.text-only .side{padding-top:0}
+  .hero-grid,.case,.agent,.how{grid-template-columns:1fr}
+  .case{gap:32px}
+  .earlier{grid-template-columns:1fr}
+  .earlier article,.earlier article+article{padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .agent{padding:36px 24px;border-radius:20px}
+  .top nav a:not(.btn){display:none}
+  section{padding:72px 0}
+  .ledger b{font-size:24px}
+}
+@media print{ .top{display:none} .rv{opacity:1;transform:none} }
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="name" href="#">loïc saillant</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#how">How I work</a>
+      <a href="#agent">Side work</a>
+      <a class="btn" href="cv_loicsaillant.pdf" download="cv_loicsaillant.pdf" data-goatcounter-click="cv-download-header" data-goatcounter-title="CV download (header)">CV&nbsp;PDF</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <section class="hero" style="padding-top:88px">
+    <div class="label">Mobile engineer · iOS · 7+ years</div>
+    <h1>I build mobile apps people open <em>every day.</em></h1>
+    <div class="hero-grid">
+      <p class="lede">Most recently Lead iOS on Toongether, a gen-AI comics app, where daily users grew 16x. Before that, Senior iOS at Wizz (Voodoo) while it went from 200K to over 1M daily users. I care about how an app feels in the hand, and I also look after the release pipeline and read the data once a feature is live.</p>
+      <ul class="facts">
+        <li><span>Now</span><span class="status"><i></i>Open to full-time or contract</span></li>
+        <li><span>Based</span><span>France · remote</span></li>
+        <li><span>Stack</span><span>Swift, SwiftUI, UIKit, Objective-C</span></li>
+        <li><span>Daily tools</span><span>Claude Code, Hermes Agent</span></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><h2>Selected work</h2><span class="label">2019 to 2026</span></div>
+
+    <article class="case rv">
+      <div>
+        <div class="case-id">
+          <img src="assets/toongether_icon.jpg" alt="Toongether app icon" width="52" height="52">
+          <div><h3>Toongether</h3><div class="role">Lead iOS Developer · Kartoon · Oct 2024 to 2026</div></div>
+        </div>
+        <p class="pitch">An app to create and read webcomics, with gen-AI characters and backgrounds. Early stage, about ten people. I led the iOS app.</p>
+        <div class="ledger">
+          <div><b>16x</b><span>daily active users while I was there</span></div>
+          <div><b>3x</b><span>D7 retention, same cohort method</span></div>
+          <div><b>30+</b><span>features shipped</span></div>
+        </div>
+        <ul>
+          <li>Built the new home: fully editorial, with every section configured on the backend side (in the spirit of myCANAL), and covered by automated tests.</li>
+          <li>Shipped features across the comic editor, creation, AI and monetization, e.g. a Shorts format, AI asset generation, "Toonify Yourself" (selfie to character), subscriptions and a declarative upsell engine.</li>
+          <li>Rewrote the feed from SwiftUI to UIKit for smooth scrolling, plus memory and image loading work.</li>
+          <li>Rebuilt CI/CD and wrote a custom CLI that automates release branches, changelogs, TestFlight and App Store submission. Then wrote a Claude Code skill on top of it, so an agent now runs the whole release without me stepping in.</li>
+        </ul>
+        <div class="stack">Swift · SwiftUI · UIKit · TCA · SPM · GitHub Actions · Amplitude · Claude Code</div>
+        <a class="store" data-goatcounter-click="appstore-toongether" href="https://apps.apple.com/app/id6477574778" target="_blank" rel="noopener">View on the App Store ↗</a>
+      </div>
+      <div class="devices">
+        <figure class="device">
+          <div class="phone">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/toongether_home.jpg" aria-label="Screen recording of the Toongether editorial home">
+              <source src="assets/toongether_home.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption>The new home: editorial, configured on the backend side.</figcaption>
+        </figure>
+        <figure class="device">
+          <div class="phone">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/toongether_editor.jpg" aria-label="Screen recording of the Toongether comic editor">
+              <source src="assets/toongether_editor.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption>The comic editor: characters, poses, AI pose search, speech bubbles.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="case rv">
+      <div>
+        <div class="case-id">
+          <img src="assets/wizz_icon.jpg" alt="Wizz app icon" width="52" height="52">
+          <div><h3>Wizz</h3><div class="role">Senior iOS Developer · Voodoo · Feb 2022 to Oct 2024</div></div>
+        </div>
+        <p class="pitch">A social app for Gen Z to meet new friends, 15M+ downloads. A team of 12 where every feature shipped behind an A/B test with a KPI target.</p>
+        <div class="ledger">
+          <div><b>200K→1M+</b><span>daily active users during my time</span></div>
+          <div><b>20+</b><span>features shipped behind A/B tests</span></div>
+          <div><b>12</b><span>people on the whole team</span></div>
+        </div>
+        <ul>
+          <li>Shipped 20+ features across the core social experience, e.g. liveness verification to check users are real people, and music stickers with audio playback inside conversations.</li>
+          <li>Owned the rebranding and new country launches: localized every screen, then used that work to start a design system from Figma tokens.</li>
+          <li>Built CI/CD with Fastlane and CircleCI, and the internal Wizz CLI.</li>
+        </ul>
+        <div class="stack">Swift · UIKit · Fastlane · CircleCI · Mixpanel · Firebase</div>
+        <a class="store" data-goatcounter-click="appstore-wizz" href="https://apps.apple.com/app/id1452906710" target="_blank" rel="noopener">View on the App Store ↗</a>
+      </div>
+      <div class="devices">
+        <figure class="device">
+          <div class="phone" style="aspect-ratio:540/1122">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/wizz_chat.jpg" aria-label="Wizz chat: real time conversation">
+              <source src="assets/wizz_chat.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption>Wizz on iOS.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <div style="margin-top:72px" class="rv">
+      <div class="label" style="margin-bottom:18px">Earlier</div>
+      <div class="earlier">
+        <article>
+          <div class="head"><img src="assets/canal_icon.jpg" alt="CANAL+ icon"><div><h4>myCANAL</h4><div class="when">Fabernovel · 2019 to 2021</div></div></div>
+          <p>iOS and tvOS video app for Canal+. Moved the settings to the new app architecture and worked with AVFoundation, in Swift alongside Objective-C.</p>
+        </article>
+        <article>
+          <div class="head"><img src="assets/g7_icon.jpg" alt="G7 Taxi icon"><div><h4>Taxis G7</h4><div class="when">Fabernovel · 2019 to 2021</div></div></div>
+          <p>About 2M monthly users. Migrated a legacy Objective-C codebase to a clean Swift architecture with a senior iOS developer, then shipped new features on it.</p>
+        </article>
+        <article>
+          <div class="head"><div class="mono-badge">T</div><div><h4>Tonydoor</h4><div class="when">Co-founder · 2021</div></div></div>
+          <p>SaaS that turned meeting recordings into transcripts and AI-picked highlights. I built the Vue.js front end and a Python back end on AWS Lambda.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="sec-head"><h2>How I work</h2></div>
+    <div class="how">
+      <div class="rv"><h4>Ship small, then measure</h4><p>At Wizz each feature started from a KPI goal and went out behind an A/B test. Plenty were killed. I still work that way: release, read the numbers, keep or cut.</p></div>
+      <div class="rv"><h4>Own the release pipeline</h4><p>I've written the CI/CD and the CLIs on my last two teams, so a small team can get from merge to TestFlight to App Store review without manual steps. At Toongether I went one step further: a Claude Code skill runs the release end to end.</p></div>
+      <div class="rv"><h4>Native where it counts</h4><p>Swift and UIKit for the parts users touch most, like a feed that has to scroll without a hitch. SwiftUI and shared modules where they save time.</p></div>
+      <div class="rv"><h4>Past the app boundary</h4><p>I like building tools and automating anything I end up doing twice: CLIs for my teams, a Claude Code skill for releases, agent jobs for my own mornings. When a feature needed it, I've also written some backend code in JavaScript, and I taught Java at Le Cnam.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="agent">
+  <div class="wrap">
+    <div class="agent rv">
+      <div>
+        <div class="label">Side work</div>
+        <h2>I run my own life on an AI agent.</h2>
+        <p>I use Hermes Agent every day, on desktop and through Telegram, wired into Gmail, Google Calendar, iCloud, Todoist and Notion.</p>
+        <p>My favourite part is the morning: at 8:00 it sends me a wrap-up of my day, then a spoken press review in English. On Mondays it plans the week's recipes and writes the grocery list. Living with an agent all day has taught me a lot about what a good mobile client for one should do.</p>
+      </div>
+      <div class="term" aria-label="My scheduled agent jobs">
+<div class="row"><span class="c"># hermes cron list</span></div>
+<div class="row"><span class="k">08:00</span>  morning-wrapup  → telegram</div>
+<div class="row"><span class="c">        calendar · todoist · gmail</span></div>
+<div class="row"><span class="k">08:02</span>  press-review    → telegram</div>
+<div class="row"><span class="c">        spoken, in English</span></div>
+<div class="row"><span class="k">mon 9</span>  weekly-recipes  → todoist</div>
+<div class="row"><span class="c">        5 recipes · grocery list</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="contact" id="contact">
+    <div class="label" style="margin-bottom:18px">Contact</div>
+    <h2>Building a mobile app?<br><a href="mailto:loic.saillant.dev@gmail.com" data-goatcounter-click="email">Write to me.</a></h2>
+    <p style="margin:-14px 0 28px;font:15px var(--mono);color:var(--muted)">loic.saillant.dev@gmail.com</p>
+    <div class="links">
+      <a class="btn" href="cv_loicsaillant.pdf" download="cv_loicsaillant.pdf" data-goatcounter-click="cv-download-contact" data-goatcounter-title="CV download (contact)">Download CV</a>
+      <a class="ghost" data-goatcounter-click="linkedin" href="https://www.linkedin.com/in/lo%C3%AFc-saillant-dev" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="ghost" data-goatcounter-click="github" href="https://github.com/dev-loic" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Loïc Saillant</span><span>Engineer · French native, English speaker</span></div></footer>
+
+<script>
+const top=document.getElementById('top');
+addEventListener('scroll',()=>top.classList.toggle('scrolled',scrollY>8),{passive:true});
+const rvs=[...document.querySelectorAll('.rv')];
+const show=el=>el.classList.add('in');
+if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.documentElement.classList.add('anim');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px -8% 0px'});
+  rvs.forEach(el=>{ if(el.getBoundingClientRect().top<innerHeight) show(el); else io.observe(el); });
+  setTimeout(()=>rvs.forEach(show),2500);
+}
+</script>
+<script data-goatcounter="https://loic-dev.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
