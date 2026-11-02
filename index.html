@@ -99,6 +99,8 @@ section{padding:96px 0}
 .earlier h4{margin:0;font:600 16px var(--sans)}
 .earlier .when{font-size:13px;color:var(--muted)}
 .earlier p{margin:0;font-size:15px;color:var(--ink)}
+.earlier.wip{grid-template-columns:repeat(2,1fr)}
+.earlier.wip .stack{margin-top:14px}
 
 /* how */
 .how{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
@@ -139,7 +141,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .case.text-only .side{padding-top:0}
   .hero-grid,.case,.agent,.how{grid-template-columns:1fr}
   .case{gap:32px}
-  .earlier{grid-template-columns:1fr}
+  .earlier,.earlier.wip{grid-template-columns:1fr}
   .earlier article,.earlier article+article{padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}
   .agent{padding:36px 24px;border-radius:20px}
   .top nav a:not(.btn){display:none}
@@ -192,7 +194,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <img src="assets/toongether_icon.jpg" alt="Toongether app icon" width="52" height="52">
           <div><h3>Toongether</h3><div class="role">Lead iOS Developer · Kartoon · Oct 2024 to 2026</div></div>
         </div>
-        <p class="pitch">An app to create and read webcomics, with gen-AI characters and backgrounds. Early stage, about ten people. I led the iOS app.</p>
+        <p class="pitch">An app to create and read webcomics, with gen-AI characters and backgrounds. Early stage, about ten people, working mostly async on Slack. I led the iOS app.</p>
         <div class="ledger">
           <div><b>16x</b><span>daily active users while I was there</span></div>
           <div><b>3x</b><span>D7 retention, same cohort method</span></div>
@@ -274,6 +276,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <article>
           <div class="head"><div class="mono-badge">T</div><div><h4>Tonydoor</h4><div class="when">Co-founder · 2021</div></div></div>
           <p>SaaS that turned meeting recordings into transcripts and AI-picked highlights. I built the Vue.js front end and a Python back end on AWS Lambda.</p>
+        </article>
+      </div>
+    </div>
+
+    <div style="margin-top:56px" class="rv">
+      <div class="label" style="margin-bottom:18px">In the works</div>
+      <div class="earlier wip">
+        <article>
+          <div class="head"><img src="assets/close_icon.svg" alt="Close app icon"><div><h4>Close</h4><div class="when">iPhone app · in development</div></div></div>
+          <p>An app to stay close to your friends. After a coffee or a call, you talk for 20 seconds; Close remembers what matters to them (birthdays, life events, small details) and every Monday tells you who to reach out to, and why. You still write the messages yourself.</p>
+          <div class="stack">SwiftUI · Cloudflare Workers · Claude API</div>
+        </article>
+        <article>
+          <div class="head"><img src="assets/elections_icon.svg" alt="French flag"><div><h4>Élections 2027</h4><div class="when">Web app · in development</div></div></div>
+          <p>A neutral chat to check where the declared candidates for France's 2027 presidential election stand. Answers come only from official documents, every claim cites its source, and any "who should I vote for" question is refused by design. Code, data and prompt will be public.</p>
+          <div class="stack">Next.js · RAG · Claude API</div>
         </article>
       </div>
     </div>
