@@ -8,358 +8,524 @@
 <meta property="og:title" content="Loïc Saillant · Mobile engineer">
 <meta property="og:description" content="7+ years shipping consumer iOS apps. Wizz (200K to 1M+ DAU), Toongether (Lead iOS, gen-AI comics).">
 <meta property="og:image" content="https://dev-loic.github.io/assets/og.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#f3f0e8; --paper-2:#e9e5da; --ink:#121212; --muted:#5d5a53; --line:#d3cec1;
-  --accent:#e0451f; --accent-ink:#fff;
-  --serif:"Instrument Serif", Georgia, serif;
-  --sans:"Geist", -apple-system, "Helvetica Neue", sans-serif;
-  --mono:"Geist Mono", ui-monospace, Menlo, monospace;
-  --wrap:1120px;
-}
-@media (prefers-color-scheme: dark){
-  :root{ --paper:#111110; --paper-2:#1b1a18; --ink:#efebe2; --muted:#9b968b; --line:#2e2c28; }
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{color:inherit}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
-.label{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-
-/* top bar */
-.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
-.top.scrolled{border-color:var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
-.top .name{font:500 14px var(--mono);text-decoration:none}
-.top nav{display:flex;gap:22px;align-items:center}
-.top nav a{font-size:14px;text-decoration:none;color:var(--muted)}
-.top nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--paper)!important;text-decoration:none;font:500 14px var(--sans)}
-.btn:hover{background:var(--accent);color:var(--accent-ink)!important}
-.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-
-/* hero */
-.hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
-.hero h1{font:400 clamp(48px,8.4vw,112px)/.95 var(--serif);letter-spacing:-.02em;margin:22px 0 0;max-width:13ch}
-.hero h1 em{color:var(--accent)}
-.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;margin-top:48px;align-items:end}
-.hero p.lede{font-size:19px;line-height:1.5;margin:0;max-width:34em}
-.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.facts li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
-.facts li span:first-child{color:var(--muted)}
-.facts li span:last-child{text-align:right}
-.status{display:inline-flex;align-items:center;gap:8px}
-.status i{width:8px;height:8px;border-radius:50%;background:#2fb75a;box-shadow:0 0 0 4px color-mix(in srgb,#2fb75a 22%,transparent)}
-
-/* work */
-section{padding:96px 0}
-.sec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:48px}
-.sec-head h2{font:400 clamp(34px,4.4vw,52px)/1 var(--serif);margin:0;letter-spacing:-.01em}
-.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;padding:56px 0;border-top:1px solid var(--line)}
-.case:last-of-type{border-bottom:1px solid var(--line)}
-.case-id{display:flex;align-items:center;gap:14px}
-.case-id img{width:52px;height:52px;border-radius:12px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
-.case-id h3{font:400 38px/1 var(--serif);margin:0}
-.case-id .role{font-size:14px;color:var(--muted);margin-top:4px}
-.case .pitch{font-size:18px;margin:26px 0 22px;max-width:30em}
-.ledger{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);margin:0 0 26px}
-.ledger div{padding:12px 12px 0 0}
-.ledger b{display:block;font:400 30px/1.05 var(--serif)}
-.ledger span{font-size:12.5px;color:var(--muted);line-height:1.35;display:block;margin-top:4px}
-.case ul{margin:0;padding:0;list-style:none}
-.case li{position:relative;padding:0 0 10px 20px;font-size:15.5px}
-.case li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1px;background:var(--accent)}
-.stack{margin-top:18px;font:13px/1.6 var(--mono);color:var(--muted)}
-.store{display:inline-block;margin-top:18px;font-size:14px;text-underline-offset:3px}
-
-
-/* device + video */
-.devices{display:flex;gap:28px;justify-content:center;align-self:start}
-.device{margin:0}
-.phone{position:relative;width:250px;aspect-ratio:540/1174;border-radius:42px;padding:9px;background:#0d0d0d;
-  box-shadow:inset 0 0 0 2px #2c2c2c,0 0 0 1px #000,0 40px 80px -30px rgba(0,0,0,.55)}
-.phone video,.phone img{display:block;width:100%;height:100%;object-fit:cover;border-radius:33px;background:#000}
-.device figcaption{margin-top:14px;text-align:center;font-size:13px;color:var(--muted);max-width:250px}
-.case.text-only{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.case.text-only .side{padding-top:84px}
-
-/* earlier */
-.earlier{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
-.earlier article{padding:28px 28px 28px 0;border-right:1px solid var(--line)}
-.earlier article+article{padding-left:28px}
-.earlier article:last-child{border-right:0}
-.earlier .head{display:flex;gap:12px;align-items:center;margin-bottom:14px}
-.earlier img{width:36px;height:36px;border-radius:9px}
-.earlier .mono-badge{width:36px;height:36px;border-radius:9px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:500 15px var(--mono)}
-.earlier h4{margin:0;font:600 16px var(--sans)}
-.earlier .when{font-size:13px;color:var(--muted)}
-.earlier p{margin:0;font-size:15px;color:var(--ink)}
-.earlier.wip{grid-template-columns:repeat(2,1fr)}
-.earlier.wip .stack{margin-top:14px}
-
-/* how */
-.how{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
-.how div{padding:22px 0;border-top:1px solid var(--line)}
-.how h4{font:400 26px/1.15 var(--serif);margin:0 0 8px}
-.how p{margin:0;color:var(--muted);font-size:15.5px}
-
-/* agent */
-.agent{background:var(--ink);color:var(--paper);border-radius:28px;padding:64px;display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
-.agent .label{color:color-mix(in srgb,var(--paper) 60%,transparent)}
-.agent h2{font:400 clamp(34px,4.2vw,50px)/1.02 var(--serif);margin:16px 0 18px}
-.agent p{color:color-mix(in srgb,var(--paper) 78%,transparent);margin:0 0 14px}
-.term{background:#0a0a0a;border:1px solid #2a2a2a;border-radius:14px;font:13px/1.65 var(--mono);color:#d8d4ca;padding:18px 20px;overflow:auto;align-self:start}
-@media (prefers-color-scheme: dark){ .agent{background:var(--paper-2);color:var(--ink)} .agent p{color:var(--muted)} .agent .label{color:var(--muted)} }
-.term .c{color:#7d796f}.term .k{color:var(--accent)}.term .g{color:#6fcf8a}
-.term .row{white-space:pre}
-
-/* contact */
-.contact{padding:120px 0 80px}
-.contact h2{font:400 clamp(44px,7vw,96px)/.95 var(--serif);margin:0 0 36px;letter-spacing:-.02em}
-.contact h2 a{text-decoration:none;border-bottom:2px solid var(--accent)}
-.contact h2 a:hover{color:var(--accent)}
-.links{display:flex;flex-wrap:wrap;gap:12px}
-.links a.ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:15px}
-.links a.ghost:hover{border-color:var(--ink)}
-footer{border-top:1px solid var(--line);padding:22px 0 40px;font-size:13px;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-/* reveal */
-.anim .rv:not(.in){opacity:0;transform:translateY(14px)}
-.rv{transition:opacity .7s ease,transform .7s ease}
-
-@media (max-width:900px){
-  .devices{gap:14px}
-  .phone{width:min(250px,calc((100vw - 70px)/2));border-radius:30px;padding:6px}
-  .phone video{border-radius:25px}
-  .case.text-only{grid-template-columns:1fr}
-  .case.text-only .side{padding-top:0}
-  .hero-grid,.case,.agent,.how{grid-template-columns:1fr}
-  .case{gap:32px}
-  .earlier,.earlier.wip{grid-template-columns:1fr}
-  .earlier article,.earlier article+article{padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}
-  .agent{padding:36px 24px;border-radius:20px}
-  .top nav a:not(.btn){display:none}
-  section{padding:72px 0}
-  .ledger b{font-size:24px}
-}
-@media print{ .top{display:none} .rv{opacity:1;transform:none} }
-</style>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@dev_loic">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0b; --bg-2:#131313; --ink:#f1f0ec; --muted:#8c8b86; --dim:#55544f; --line:#222220;
+  --hi:#d4ff3f;            /* single accent: signal lime */
+  --paper:#efeee9; --paper-ink:#0b0b0b; --paper-muted:#66655f; --paper-line:#d6d4cc;
+  --sans:"Archivo", -apple-system, "Helvetica Neue", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --pad:max(clamp(20px,5vw,72px), calc((100vw - 1280px) / 2));
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--sans);font-stretch:100%;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+::selection{background:var(--hi);color:#000}
+a:focus-visible,button:focus-visible{outline:2px solid var(--hi);outline-offset:3px;border-radius:4px}
+.mono{font:500 12px/1.4 var(--mono);letter-spacing:.02em}
+.cap{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.wide{font-stretch:125%}
+.px{padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ── nav ───────────────────────────── */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:60px;mix-blend-mode:difference;color:#fff;transition:transform .45s var(--ease)}
+.nav.away{transform:translateY(-100%)}
+.nav a{text-decoration:none}
+.nav .id{font:700 15px var(--sans);font-stretch:125%;letter-spacing:-.01em}
+.nav nav{display:flex;gap:26px;align-items:center}
+.nav nav a{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.nav nav a:hover{opacity:1}
+.nav nav a.cv{opacity:1;border-bottom:1px solid currentColor;padding-bottom:2px}
+
+/* ── hero ──────────────────────────── */
+.hero{min-height:100svh;display:grid;grid-template-rows:1fr auto;padding-top:96px;padding-bottom:40px;position:relative;overflow:hidden}
+.hero h1{margin:0;align-self:end;font-weight:800;font-stretch:125%;font-size:clamp(44px,8vw,116px);line-height:.86;letter-spacing:-.045em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.12em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 .soft{font-weight:300;color:var(--muted)}
+.hero h1 .hl{color:var(--hi)}
+.hero-foot{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:56px;padding-top:20px;border-top:1px solid var(--line);align-items:start}
+.hero-foot .lede{grid-column:1 / span 6;margin:0;font-size:clamp(17px,1.35vw,20px);line-height:1.5;color:#cfcec9;max-width:36em}
+.hero-foot .lede b{color:var(--ink);font-weight:600}
+.hero-foot .meta{grid-column:8 / span 5;display:grid;grid-template-columns:auto 1fr;gap:9px 20px;margin:0}
+.hero-foot dt{color:var(--dim)}
+.hero-foot dd{margin:0;color:var(--ink)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--hi);margin-right:8px;vertical-align:1px;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--hi) 55%,transparent)}50%{box-shadow:0 0 0 6px transparent}}
+.dock{grid-column:1 / -1;display:flex;align-items:center;gap:14px;margin-top:14px}
+.dock img{width:34px;height:34px;border-radius:9px;outline:1px solid rgba(255,255,255,.08);outline-offset:-1px;transition:transform .35s var(--ease)}
+.dock a{position:relative;display:block;border-radius:9px;text-decoration:none}
+.dock a:hover img,.dock a:focus-visible img{transform:translateY(-4px) scale(1.06)}
+.dock .tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,4px);white-space:nowrap;font:500 11px var(--mono);padding:5px 8px;border-radius:5px;background:var(--ink);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s var(--ease)}
+.dock a:hover .tip,.dock a:focus-visible .tip{opacity:1;transform:translate(-50%,0)}
+.chapter,.row{scroll-margin-top:24px}
+.row:target{animation:flash 1.6s var(--ease)}
+@keyframes flash{0%,30%{background:color-mix(in srgb,var(--hi) 14%,transparent)}100%{background:transparent}}
+.dock .cap{margin-right:6px}
+
+/* ── work: sticky device scrollytelling ── */
+.work{position:relative;border-top:1px solid var(--line)}
+.work-head{display:flex;justify-content:space-between;align-items:baseline;padding-top:28px;padding-bottom:12px}
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(32px,5vw,96px)}
+.chapters{padding-bottom:12vh}
+.chapter{min-height:92vh;padding:12vh 0 4vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .6s var(--ease)}
+.chapter.on{opacity:1}
+.chapter .k{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.chapter .k img{width:44px;height:44px;border-radius:11px}
+.chapter .k .cap{color:var(--muted)}
+.chapter h2{margin:0;font-weight:800;font-stretch:125%;font-size:clamp(40px,5.4vw,92px);line-height:1.02;letter-spacing:-.04em;padding-bottom:.22em;margin-bottom:-.18em}
+.chapter h3{margin:0;font-weight:700;font-stretch:115%;font-size:clamp(28px,3vw,46px);line-height:1;letter-spacing:-.03em}
+.chapter .role{margin-top:16px;color:var(--muted)}
+.chapter .pitch{font-size:clamp(17px,1.3vw,19px);line-height:1.5;margin:26px 0 0;max-width:32em;color:#d8d7d2}
+.figs{display:flex;flex-wrap:wrap;gap:0;margin:30px 0 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.figs div{flex:1 1 0;min-width:120px;padding:14px 18px 14px 0}
+.figs div+div{padding-left:18px;border-left:1px solid var(--line)}
+#wizz .figs div:first-child{flex-grow:1.5}
+.figs b{display:block;font-weight:700;font-stretch:125%;font-size:clamp(22px,1.9vw,32px);letter-spacing:-.03em;line-height:1}
+.figs span{display:block;margin-top:6px;font-size:13px;color:var(--muted);line-height:1.35}
+.chapter ul{list-style:none;margin:24px 0 0;padding:0;max-width:36em;counter-reset:b}
+.chapter li{position:relative;padding:12px 0 12px 44px;border-top:1px solid var(--line);font-size:15.5px;color:#d0cfca;counter-increment:b}
+.chapter li::before{content:counter(b,decimal-leading-zero);position:absolute;left:0;top:14px;font:500 11px var(--mono);color:var(--dim)}
+.stack{margin-top:22px;font:12px/1.7 var(--mono);color:var(--muted)}
+.ext{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font:600 15px var(--sans);text-decoration:none;align-self:flex-start;border-bottom:1px solid var(--dim);padding-bottom:4px;transition:border-color .2s,color .2s}
+.ext:hover{color:var(--hi);border-color:var(--hi)}
+.ext i{font-style:normal;transition:transform .3s var(--ease)}
+.ext:hover i{transform:translate(3px,-3px)}
+
+.stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.stage::before{content:"";position:absolute;inset:12% -10%;background:radial-gradient(closest-side,var(--glow,rgba(255,255,255,.06)),transparent 70%);transition:background 1s var(--ease);z-index:-1;pointer-events:none}
+.stage-cap{display:flex;justify-content:space-between;width:min(340px,40vh);font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stage-cap b{color:var(--ink);font-weight:500}
+.phone{position:relative;height:min(72svh,690px);aspect-ratio:540/1174;border-radius:clamp(36px,5.6svh,50px);padding:clamp(7px,1.1svh,10px);background:#050505;
+  box-shadow:inset 0 0 0 1.5px #2b2b2b,0 0 0 1px #000,0 60px 120px -40px rgba(0,0,0,.9)}
+.screen{position:relative;width:100%;height:100%;border-radius:calc(clamp(36px,5.6svh,50px) - clamp(7px,1.1svh,10px));overflow:hidden;background:#000}
+.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+.screen video.on{opacity:1;transform:none}
+.segs{display:flex;gap:6px;width:min(340px,40vh);min-height:19px}
+.segs button{all:unset;flex:1;cursor:pointer;padding:8px 0}
+.segs button span{display:block;height:3px;border-radius:2px;background:#2a2a28;overflow:hidden}
+.segs button:hover span{background:#3a3a37}
+.segs i{display:block;height:100%;width:100%;background:var(--ink);transform-origin:left;transform:scaleX(var(--p,0))}
+.inline-phone{display:none}
+
+/* ── index (earlier + in the works) ── */
+.index{padding-top:120px;padding-bottom:120px;border-top:1px solid var(--line)}
+.sec-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:40px}
+.sec-title h2{margin:0;font-weight:800;font-stretch:125%;font-size:clamp(38px,5.6vw,96px);line-height:1.02;letter-spacing:-.045em;padding-bottom:.22em;margin-bottom:-.18em}
+.rows{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:110px 56px minmax(180px,1.1fr) minmax(0,2fr) minmax(140px,.8fr);gap:24px;align-items:start;padding:22px 0;border-bottom:1px solid var(--line);transition:background .25s}
+.row:hover{background:linear-gradient(90deg,transparent,rgba(255,255,255,.025) 30%,transparent)}
+.row .yr{font:500 12px/1.9 var(--mono);color:var(--muted)}
+.row img,.row .badge{width:40px;height:40px;border-radius:10px}
+.row .badge{display:grid;place-items:center;background:var(--ink);color:var(--bg);font:700 16px var(--sans);font-stretch:125%}
+.row h4{margin:0;font-weight:700;font-stretch:112%;font-size:22px;letter-spacing:-.02em;line-height:1.15;transition:color .2s}
+.row:hover h4{color:var(--hi)}
+.row .where{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+.row .as{display:inline-block;margin-top:10px;font:500 12px var(--mono);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:2px;transition:color .2s,border-color .2s}
+.row .as:hover{color:var(--hi);border-color:var(--hi)}
+.row p{margin:0;font-size:15px;color:#c9c8c3;max-width:46em}
+.row .st{font:12px/1.7 var(--mono);color:var(--muted);text-align:right}
+.tag{display:inline-block;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border-radius:4px;background:var(--hi);color:#000;margin-bottom:8px}
+.group{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding:28px 0 8px}
+
+/* ── how I work ───────────────────── */
+.how{padding-top:110px;padding-bottom:120px;background:var(--bg-2);border-top:1px solid var(--line)}
+.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.principles article{padding:26px 28px 0 0}
+.principles article+article{padding-left:28px;border-left:1px solid var(--line)}
+.principles .n{font:500 12px var(--mono);color:var(--hi)}
+.principles h4{margin:30px 0 14px;font-weight:700;font-stretch:118%;font-size:clamp(22px,1.9vw,30px);line-height:1.02;letter-spacing:-.03em}
+.principles p{margin:0;font-size:15px;color:var(--muted)}
+
+/* ── agent (inverted interruption) ── */
+.agent{background:var(--paper);color:var(--paper-ink);padding-top:120px;padding-bottom:120px}
+.agent-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,110px);align-items:center}
+.agent .cap{color:var(--paper-muted)}
+.agent h2{margin:18px 0 12px;font-weight:800;font-stretch:125%;font-size:clamp(40px,5.4vw,90px);line-height:.98;letter-spacing:-.045em;padding-bottom:.22em}
+.agent p{margin:0 0 16px;font-size:17px;color:#33322e;max-width:30em}
+.term{background:#0b0b0b;color:#d9d8d3;border-radius:16px;font:13.5px/1.75 var(--mono);box-shadow:0 40px 80px -40px rgba(0,0,0,.45);overflow:hidden}
+.term .bar{display:flex;gap:7px;align-items:center;padding:13px 16px;border-bottom:1px solid #1f1f1f}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#2a2a2a}
+.term .bar span{margin-left:auto;font-size:11px;color:#5c5b56;letter-spacing:.06em}
+.term pre{margin:0;padding:22px 22px 26px;min-height:270px;white-space:pre;overflow:auto;font:inherit}
+.term .c{color:#6d6c66}.term .k{color:var(--hi)}.term .p{color:#8c8b86}
+.caret{display:inline-block;width:8px;height:1.05em;background:var(--hi);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ── contact ───────────────────────── */
+.contact{padding-top:140px;padding-bottom:56px;position:relative;overflow:hidden}
+.contact .q{font-weight:300;font-stretch:110%;font-size:clamp(26px,3vw,44px);letter-spacing:-.025em;color:var(--muted);margin:18px 0 10px}
+.mail{display:block;text-decoration:none;font-weight:800;font-stretch:125%;font-size:clamp(34px,7.4vw,140px);line-height:1.02;letter-spacing:-.05em;word-break:break-word;position:relative;width:fit-content;max-width:100%}
+.mail span{background:linear-gradient(var(--hi),var(--hi)) left 92% / 0 .07em no-repeat;transition:background-size .6s var(--ease),color .3s}
+.mail:hover span{background-size:100% .07em;color:var(--hi)}
+.mail-sub{font:13px var(--mono);color:var(--muted);margin-top:18px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+.links a{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border:1px solid #2e2e2c;border-radius:999px;text-decoration:none;font:500 14px var(--sans);transition:border-color .2s,background .2s,color .2s}
+.links a:hover{border-color:var(--ink)}
+.links a.solid{background:var(--hi);border-color:var(--hi);color:#000}
+.links a.solid:hover{background:var(--ink);border-color:var(--ink)}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:22px;padding-bottom:28px;border-top:1px solid var(--line);font:12px var(--mono);color:var(--dim)}
+
+/* ── motion ────────────────────────── */
+.js .ln>span{transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.js.ready .ln>span{transform:none}
+.js .ln:nth-child(2)>span{transition-delay:.08s}.js .ln:nth-child(3)>span{transition-delay:.16s}
+.js .fade{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease) .35s,transform .9s var(--ease) .35s}
+.js.ready .fade{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before{animation:none!important;transition:none!important}
+  .js .ln>span,.js .fade,.js .rv{opacity:1!important;transform:none!important}
+}
+
+/* ── responsive ────────────────────── */
+@media (max-width:1100px){
+  .principles{grid-template-columns:1fr 1fr}
+  .principles article:nth-child(3){padding-left:0;border-left:0}
+  .principles article:nth-child(n+3){margin-top:36px;border-top:1px solid var(--line)}
+  .row{grid-template-columns:90px 48px minmax(0,1fr) minmax(0,1.6fr)}
+  .row .st{display:none}
+}
+@media (max-width:900px){
+  .nav nav a:not(.cv){display:none}
+  .hero-foot .lede,.hero-foot .meta{grid-column:1 / -1}
+  .story{grid-template-columns:1fr}
+  .stage{display:none}
+  .chapter{min-height:0;opacity:1;padding:64px 0 8px}
+  .chapter:first-child{min-height:0}
+  .inline-pair{display:flex;gap:12px;justify-content:center}
+  .inline-pair .inline-phone{width:calc((100% - 12px)/2);max-width:240px;border-radius:30px;padding:6px}
+  .inline-pair .inline-phone .screen{border-radius:24px}
+  .inline-phone{display:block;margin:34px auto 0;width:min(270px,72vw);height:auto;border-radius:38px;padding:8px}
+  .inline-phone{aspect-ratio:auto}
+  .inline-phone .screen{border-radius:30px;aspect-ratio:540/1174;height:auto}
+  .inline-phone video{opacity:1;transform:none}
+  .row{grid-template-columns:44px minmax(0,1fr);gap:6px 16px}
+  .row .yr{grid-column:2;order:-1}
+  .row .ic{grid-row:span 2}
+  .row p{grid-column:2}
+  .agent-grid{grid-template-columns:1fr}
+  .principles{grid-template-columns:1fr}
+  .principles article,.principles article+article{padding:22px 0 0;border-left:0;margin-top:28px;border-top:1px solid var(--line)}
+  .principles h4{margin-top:18px}
+  .index,.how,.agent{padding-top:80px;padding-bottom:80px}
+  .contact{padding-top:96px}
+}
+@media print{ .nav{display:none} .stage{position:static} .chapter{opacity:1;min-height:0} }
+</style>
 </head>
 <body>
 
-<header class="top" id="top">
-  <div class="wrap">
-    <a class="name" href="#">loïc saillant</a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#how">How I work</a>
-      <a href="#agent">Side work</a>
-      <a class="btn" href="cv_loicsaillant.pdf" download="cv_loicsaillant.pdf" data-goatcounter-click="cv-download-header" data-goatcounter-title="CV download (header)">CV&nbsp;PDF</a>
-    </nav>
-  </div>
+<header class="nav px">
+  <a class="id" href="#">Loïc Saillant</a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#index">Index</a>
+    <a href="#how">How I work</a>
+    <a href="#agent">Side work</a>
+    <a class="cv" href="cv_loicsaillant.pdf" download="cv_loicsaillant.pdf" data-goatcounter-click="cv-download-header" data-goatcounter-title="CV download (header)">CV ↓</a>
+  </nav>
 </header>
 
 <main>
-<div class="wrap">
-  <section class="hero" style="padding-top:88px">
-    <div class="label">Mobile engineer · iOS · 7+ years</div>
-    <h1>I build mobile apps people open <em>every day.</em></h1>
-    <div class="hero-grid">
-      <p class="lede">Most recently Lead iOS on Toongether, a gen-AI comics app, where daily users grew 16x. Before that, Senior iOS at Wizz (Voodoo) while it went from 200K to over 1M daily users. I like apps that feel fast, and I usually end up owning the release pipeline too.</p>
-      <ul class="facts">
-        <li><span>Now</span><span class="status"><i></i>Open to full-time or contract</span></li>
-        <li><span>Based</span><span>France · remote</span></li>
-        <li><span>Stack</span><span>Swift, SwiftUI, UIKit, Objective-C</span></li>
-        <li><span>Daily tools</span><span>Claude Code, Hermes Agent</span></li>
-      </ul>
+<!-- HERO -->
+<section class="hero px">
+  <h1>
+    <span class="ln"><span><span class="soft">I build</span> mobile apps</span></span>
+    <span class="ln"><span>people open</span></span>
+    <span class="ln"><span class="hl">every day.</span></span>
+  </h1>
+  <div class="hero-foot fade">
+    <p class="lede">Most recently <b>Lead iOS on Toongether</b>, a gen-AI comics app, where daily users grew 16x. Before that, <b>Senior iOS at Wizz</b> (Voodoo) while it went from 200K to over 1M daily users. I like apps that feel fast, and I usually end up owning the release pipeline too.</p>
+    <dl class="meta mono">
+      <dt>Now</dt><dd><span class="dot"></span>Open to full-time or contract</dd>
+      <dt>Based</dt><dd>France · remote worldwide</dd>
+      <dt>Stack</dt><dd>Swift, SwiftUI, UIKit, Objective&#8209;C</dd>
+      <dt>Daily tools</dt><dd>Claude Code, Hermes Agent</dd>
+      <dt>Experience</dt><dd>7+ years, iOS</dd>
+    </dl>
+    <div class="dock">
+      <span class="cap">Worked on</span>
+      <a href="#toongether" aria-label="Toongether, see the case study"><img src="assets/toongether_icon.jpg" alt="" width="34" height="34"><span class="tip">Toongether</span></a>
+      <a href="#wizz" aria-label="Wizz, see the case study"><img src="assets/wizz_icon.jpg" alt="" width="34" height="34"><span class="tip">Wizz</span></a>
+      <a href="https://apps.apple.com/app/id694580816" target="_blank" rel="noopener" data-goatcounter-click="appstore-canal" aria-label="CANAL+ on the App Store"><img src="assets/canal_icon.jpg" alt="" width="34" height="34"><span class="tip">CANAL+ ↗</span></a>
+      <a href="https://apps.apple.com/app/id402196027" target="_blank" rel="noopener" data-goatcounter-click="appstore-g7" aria-label="Taxis G7 on the App Store"><img src="assets/g7_icon.jpg" alt="" width="34" height="34"><span class="tip">Taxis G7 ↗</span></a>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head"><h2>Selected work</h2><span class="label">2019 to 2026</span></div>
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-head px"><span class="cap">Selected work</span><span class="cap">2019 — 2026</span></div>
+  <div class="story px">
+    <div class="chapters">
 
-    <article class="case rv">
-      <div>
-        <div class="case-id">
-          <img src="assets/toongether_icon.jpg" alt="Toongether app icon" width="52" height="52">
-          <div><h3>Toongether</h3><div class="role">Lead iOS Developer · Kartoon · Oct 2024 to 2026</div></div>
-        </div>
+      <article class="chapter" id="toongether" data-videos="0,1" data-glow="rgba(232,140,150,.16)">
+        <div class="k"><img src="assets/toongether_icon.jpg" alt="Toongether app icon" width="44" height="44"><span class="cap">01 · Kartoon · Oct 2024 — 2026</span></div>
+        <h2>Toongether</h2>
+        <div class="role">Lead iOS Developer · Kartoon</div>
         <p class="pitch">An app to create and read webcomics, with gen-AI characters and backgrounds. Early stage, about ten people, working mostly async on Slack. I led the iOS app.</p>
-        <div class="ledger">
+        <div class="figs">
           <div><b>16x</b><span>daily active users while I was there</span></div>
           <div><b>3x</b><span>D7 retention, same cohort method</span></div>
           <div><b>30+</b><span>features shipped</span></div>
         </div>
         <ul>
           <li>Built the new editorial home, with every section configured on the backend side, plus automated tests.</li>
-          <li>Shipped features in the comic editor, AI generation ("Toonify Yourself", selfie to character) and monetization (subscriptions, upsell engine).</li>
           <li>Kept the balance between SwiftUI and UIKit, the main technical topic of the project: SwiftUI for speed of building, UIKit where performance mattered, like the feed.</li>
+          <li>Shipped features in the comic editor, AI generation ("Toonify Yourself", selfie to character) and monetization (subscriptions, upsell engine).</li>
           <li>Rebuilt CI/CD, wrote a release CLI, then a Claude Code skill that ran the whole release on its own.</li>
           <li>Also release manager and roadmap owner: priorities, planning, sync with marketing and backend, 2 to 3 releases a week.</li>
         </ul>
-        <div class="stack">Swift · SwiftUI · UIKit · TCA · SPM · GitHub Actions · Amplitude · Claude Code</div>
-        <a class="store" data-goatcounter-click="archive-toongether" href="https://archive.toongether.co/" target="_blank" rel="noopener">Read the stories in the Toongether archive ↗</a>
-      </div>
-      <div class="devices">
-        <figure class="device">
-          <div class="phone">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/toongether_home.jpg" aria-label="Screen recording of the Toongether editorial home">
-              <source src="assets/toongether_home.mp4" type="video/mp4">
-            </video>
-          </div>
-          <figcaption>The new home: editorial, configured on the backend side.</figcaption>
-        </figure>
-        <figure class="device">
-          <div class="phone">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/toongether_editor.jpg" aria-label="Screen recording of the Toongether comic editor">
-              <source src="assets/toongether_editor.mp4" type="video/mp4">
-            </video>
-          </div>
-          <figcaption>The comic editor: characters, poses, AI pose search, speech bubbles.</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="case rv">
-      <div>
-        <div class="case-id">
-          <img src="assets/wizz_icon.jpg" alt="Wizz app icon" width="52" height="52">
-          <div><h3>Wizz</h3><div class="role">Senior iOS Developer · Voodoo · Feb 2022 to Oct 2024</div></div>
+        <div class="stack">Swift · SwiftUI · UIKit · TCA · GitHub Actions</div>
+        <a class="ext" data-goatcounter-click="archive-toongether" href="https://archive.toongether.co/" target="_blank" rel="noopener">Read the stories in the Toongether archive <i>↗</i></a>
+        <div class="inline-pair">
+          <div class="phone inline-phone"><div class="screen"><video muted loop playsinline preload="none" poster="assets/toongether_home.jpg" aria-label="Screen recording of the Toongether editorial home"><source src="assets/toongether_home.mp4" type="video/mp4"></video></div></div>
+          <div class="phone inline-phone"><div class="screen"><video muted loop playsinline preload="none" poster="assets/toongether_editor.jpg" aria-label="Screen recording of the Toongether comic editor"><source src="assets/toongether_editor.mp4" type="video/mp4"></video></div></div>
         </div>
+      </article>
+
+      <article class="chapter" id="wizz" data-videos="2" data-glow="rgba(150,40,120,.30)">
+        <div class="k"><img src="assets/wizz_icon.jpg" alt="Wizz app icon" width="44" height="44"><span class="cap">02 · Voodoo · Feb 2022 — Oct 2024</span></div>
+        <h2>Wizz</h2>
+        <div class="role">Senior iOS Developer · Voodoo</div>
         <p class="pitch">A social app for Gen Z to meet new friends, 15M+ downloads. A team of 12 where every feature shipped behind an A/B test with a KPI target.</p>
-        <div class="ledger">
+        <div class="figs">
           <div><b>200K→1M+</b><span>daily active users during my time</span></div>
           <div><b>20+</b><span>features shipped behind A/B tests</span></div>
           <div><b>12</b><span>people on the whole team</span></div>
         </div>
         <ul>
-          <li>Shipped 20+ features, e.g. liveness verification to check users are real people, and music stickers with in-chat audio.</li>
-          <li>Owned the rebranding and new country launches: full localization, then a first design system from Figma tokens.</li>
+          <li>Shipped 20+ features, e.g. liveness verification to check users are real people, music stickers on profiles in the swipe, and a live chat running fully on WebSockets.</li>
+          <li>Owned the rebranding and new country launches: full localization, then a first design system.</li>
           <li>Built CI/CD with Fastlane and CircleCI, and the internal Wizz CLI.</li>
         </ul>
-        <div class="stack">Swift · UIKit · Fastlane · CircleCI · Mixpanel · Firebase</div>
-        <a class="store" data-goatcounter-click="appstore-wizz" href="https://apps.apple.com/app/id1452906710" target="_blank" rel="noopener">View on the App Store ↗</a>
-      </div>
-      <div class="devices">
-        <figure class="device">
-          <div class="phone" style="aspect-ratio:540/1122">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/wizz_chat.jpg" aria-label="Wizz chat: real time conversation">
-              <source src="assets/wizz_chat.mp4" type="video/mp4">
-            </video>
-          </div>
-          <figcaption>Wizz on iOS.</figcaption>
-        </figure>
-      </div>
-    </article>
+        <div class="stack">Swift · UIKit · WebSockets · Fastlane · CircleCI · Mixpanel · Firebase</div>
+        <a class="ext" data-goatcounter-click="appstore-wizz" href="https://apps.apple.com/app/id1452906710" target="_blank" rel="noopener">View on the App Store <i>↗</i></a>
+        <div class="phone inline-phone"><div class="screen"><video muted loop playsinline preload="none" poster="assets/wizz_chat.jpg" aria-label="Wizz chat: real time conversation"><source src="assets/wizz_chat.mp4" type="video/mp4"></video></div></div>
+      </article>
 
-    <div style="margin-top:72px" class="rv">
-      <div class="label" style="margin-bottom:18px">Earlier</div>
-      <div class="earlier">
-        <article>
-          <div class="head"><img src="assets/canal_icon.jpg" alt="CANAL+ icon"><div><h4>myCANAL</h4><div class="when">Fabernovel · 2019 to 2021</div></div></div>
-          <p>iOS and tvOS video app for Canal+. Moved the settings to the new app architecture and worked with AVFoundation, in Swift alongside Objective-C.</p>
-        </article>
-        <article>
-          <div class="head"><img src="assets/g7_icon.jpg" alt="G7 Taxi icon"><div><h4>Taxis G7</h4><div class="when">Fabernovel · 2019 to 2021</div></div></div>
-          <p>About 2M monthly users. Migrated a legacy Objective-C codebase to a clean Swift architecture with a senior iOS developer, then shipped new features on it.</p>
-        </article>
-        <article>
-          <div class="head"><div class="mono-badge">T</div><div><h4>Tonydoor</h4><div class="when">Co-founder · 2021</div></div></div>
-          <p>SaaS that turned meeting recordings into transcripts and AI-picked highlights. I built the Vue.js front end and a Python back end on AWS Lambda.</p>
-        </article>
-      </div>
     </div>
 
-    <div style="margin-top:56px" class="rv">
-      <div class="label" style="margin-bottom:18px">In the works</div>
-      <div class="earlier wip">
-        <article>
-          <div class="head"><img src="assets/close_icon.svg" alt="Close app icon"><div><h4>Close</h4><div class="when">iPhone app · in development</div></div></div>
-          <p>An app to stay close to your friends. After a coffee or a call, you talk for 20 seconds; Close remembers what matters to them (birthdays, life events, small details) and every Monday tells you who to reach out to, and why. You still write the messages yourself.</p>
-          <div class="stack">SwiftUI · Cloudflare Workers · Claude API</div>
-        </article>
-        <article>
-          <div class="head"><img src="assets/elections_icon.svg" alt="French flag"><div><h4>Élections 2027</h4><div class="when">Web app · in development</div></div></div>
-          <p>A neutral chat to check where the declared candidates for France's 2027 presidential election stand. Answers come only from official documents, every claim cites its source, and any "who should I vote for" question is refused by design. Code, data and prompt will be public.</p>
-          <div class="stack">Next.js · RAG · Claude API</div>
-        </article>
+    <aside class="stage" aria-hidden="true">
+      <div class="stage-cap"><span id="stageLabel"><b>Toongether</b> · Home</span><span id="stageNum">1/3</span></div>
+      <div class="phone">
+        <div class="screen">
+          <video class="on" muted playsinline preload="metadata" poster="assets/toongether_home.jpg"><source src="assets/toongether_home.mp4" type="video/mp4"></video>
+          <video muted playsinline preload="none" poster="assets/toongether_editor.jpg"><source src="assets/toongether_editor.mp4" type="video/mp4"></video>
+          <video muted playsinline preload="none" poster="assets/wizz_chat.jpg"><source src="assets/wizz_chat.mp4" type="video/mp4"></video>
+        </div>
       </div>
+      <div class="segs" id="segs"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- INDEX -->
+<section class="index px" id="index">
+  <div class="sec-title rv"><h2>Index</h2><span class="cap">Earlier work &amp; what I'm building</span></div>
+  <div class="rows rv">
+    <div class="group">In the works</div>
+    <div class="row">
+      <span class="yr">2026 —</span>
+      <img class="ic" src="assets/close_icon.svg" alt="Close app icon">
+      <div><span class="tag">Building</span><h4>Close</h4><span class="where">iPhone app</span></div>
+      <p>An app to stay close to your friends. After a coffee or a call, you talk for 20 seconds; Close remembers what matters to them (birthdays, life events, small details) and every Monday tells you who to reach out to, and why. You still write the messages yourself.</p>
+      <span class="st">SwiftUI<br>Cloudflare Workers<br>Claude API</span>
+    </div>
+    <div class="row">
+      <span class="yr">2026 —</span>
+      <img class="ic" src="assets/elections_icon.svg" alt="French flag">
+      <div><span class="tag">Building</span><h4>Élections 2027</h4><span class="where">Web app</span></div>
+      <p>A neutral chat to check where the declared candidates for France's 2027 presidential election stand. Answers come only from official documents, every claim cites its source, and any "who should I vote for" question is refused by design. Code, data and prompt will be public.</p>
+      <span class="st">Next.js<br>RAG<br>Claude API</span>
+    </div>
+    <div class="group">Earlier</div>
+    <div class="row">
+      <span class="yr">2021</span>
+      <div class="badge ic">T</div>
+      <div><h4>Tonydoor</h4><span class="where">Co-founder</span></div>
+      <p>SaaS that turned meeting recordings into transcripts and AI-picked highlights. I built the Vue.js front end and a Python back end on AWS Lambda.</p>
+      <span class="st">Vue.js<br>Python<br>AWS Lambda</span>
+    </div>
+    <div class="row" id="mycanal">
+      <span class="yr">2019 — 21</span>
+      <img class="ic" src="assets/canal_icon.jpg" alt="CANAL+ app icon">
+      <div><h4>CANAL+</h4><span class="where">Fabernovel</span><a class="as" href="https://apps.apple.com/app/id694580816" target="_blank" rel="noopener" data-goatcounter-click="appstore-canal">App Store ↗</a></div>
+      <p>iOS and tvOS video app for CANAL+. Moved the settings to the new app architecture and worked with AVFoundation, in Swift alongside Objective-C.</p>
+      <span class="st">Swift · Obj-C<br>tvOS<br>AVFoundation</span>
+    </div>
+    <div class="row" id="g7">
+      <span class="yr">2019 — 21</span>
+      <img class="ic" src="assets/g7_icon.jpg" alt="G7 Taxi icon">
+      <div><h4>Taxis G7</h4><span class="where">Fabernovel</span><a class="as" href="https://apps.apple.com/app/id402196027" target="_blank" rel="noopener" data-goatcounter-click="appstore-g7">App Store ↗</a></div>
+      <p>About 2M monthly users. Migrated a legacy Objective-C codebase to a clean Swift architecture with a senior iOS developer, then shipped new features on it.</p>
+      <span class="st">Obj-C → Swift</span>
     </div>
   </div>
 </section>
 
-<section id="how" style="background:var(--paper-2)">
-  <div class="wrap">
-    <div class="sec-head"><h2>How I work</h2></div>
-    <div class="how">
-      <div class="rv"><h4>Ship small, then measure</h4><p>At Wizz each feature started from a KPI goal and went out behind an A/B test. Plenty were killed. I still work that way: release, read the numbers, keep or cut.</p></div>
-      <div class="rv"><h4>Own the release pipeline</h4><p>I've written the CI/CD and the CLIs on my last two teams, so a small team can get from merge to TestFlight to App Store review without manual steps.</p></div>
-      <div class="rv"><h4>Native where it counts</h4><p>Swift and UIKit for the parts users touch most, like a feed that has to scroll without a hitch. SwiftUI and shared modules where they save time.</p></div>
-      <div class="rv"><h4>Past the app boundary</h4><p>I like building tools and automating anything I end up doing twice: CLIs for my teams, a Claude Code skill for releases, agent jobs for my own mornings. When a feature needed it, I've also written some backend code in JavaScript, and I taught Java at Le Cnam.</p></div>
+<!-- HOW -->
+<section class="how px" id="how">
+  <div class="sec-title rv"><h2>How I work</h2></div>
+  <div class="principles rv">
+    <article><span class="n">01</span><h4>Ship small, then measure</h4><p>At Wizz each feature started from a KPI goal and went out behind an A/B test. Plenty were killed. I still work that way: release, read the numbers, keep or cut.</p></article>
+    <article><span class="n">02</span><h4>Own the release pipeline</h4><p>I've written the CI/CD and the CLIs on my last two teams, so a small team can get from merge to TestFlight to App Store review without manual steps.</p></article>
+    <article><span class="n">03</span><h4>Native where it counts</h4><p>Swift and UIKit for the parts users touch most, like a feed that has to scroll without a hitch. SwiftUI and shared modules where they save time.</p></article>
+    <article><span class="n">04</span><h4>Past the app boundary</h4><p>I like building tools and automating anything I end up doing twice: CLIs for my teams, a Claude Code skill for releases, agent jobs for my own mornings. When a feature needed it, I've also written some backend code in JavaScript, and I taught Java at Le Cnam.</p></article>
+  </div>
+</section>
+
+<!-- AGENT -->
+<section class="agent px" id="agent">
+  <div class="agent-grid">
+    <div class="rv">
+      <span class="cap">Side work</span>
+      <h2>My personal agent.</h2>
+      <p>I use Hermes Agent every day, on desktop and through Telegram, wired into Gmail, Google Calendar, iCloud, Todoist and Notion.</p>
+      <p>My favourite part is the morning: at 8:00 it sends me a wrap-up of my day, then a spoken press review in English. On Mondays it plans the week's recipes and writes the grocery list.</p>
+    </div>
+    <div class="term rv" aria-label="My scheduled agent jobs">
+      <div class="bar"><i></i><i></i><i></i><span>hermes — zsh</span></div>
+<pre id="term"><span class="p">$</span> hermes cron list
+<span class="k">08:00</span>  morning-wrapup  → telegram
+<span class="c">       calendar · todoist · gmail</span>
+<span class="k">08:02</span>  press-review    → telegram
+<span class="c">       spoken, in English</span>
+<span class="k">mon 9</span>  weekly-recipes  → todoist
+<span class="c">       5 recipes · grocery list</span>
+<span class="p">$</span> <span class="caret"></span></pre>
     </div>
   </div>
 </section>
 
-<section id="agent">
-  <div class="wrap">
-    <div class="agent rv">
-      <div>
-        <div class="label">Side work</div>
-        <h2>My personal agent.</h2>
-        <p>I use Hermes Agent every day, on desktop and through Telegram, wired into Gmail, Google Calendar, iCloud, Todoist and Notion.</p>
-        <p>My favourite part is the morning: at 8:00 it sends me a wrap-up of my day, then a spoken press review in English. On Mondays it plans the week's recipes and writes the grocery list.</p>
-      </div>
-      <div class="term" aria-label="My scheduled agent jobs">
-<div class="row"><span class="c"># hermes cron list</span></div>
-<div class="row"><span class="k">08:00</span>  morning-wrapup  → telegram</div>
-<div class="row"><span class="c">        calendar · todoist · gmail</span></div>
-<div class="row"><span class="k">08:02</span>  press-review    → telegram</div>
-<div class="row"><span class="c">        spoken, in English</span></div>
-<div class="row"><span class="k">mon 9</span>  weekly-recipes  → todoist</div>
-<div class="row"><span class="c">        5 recipes · grocery list</span></div>
-      </div>
-    </div>
+<!-- CONTACT -->
+<section class="contact px" id="contact">
+  <span class="cap">Contact</span>
+  <p class="q">Building a mobile app? Write to me.</p>
+  <a class="mail" href="mailto:loic.saillant.dev@gmail.com" data-goatcounter-click="email"><span>loic.saillant.dev</span><br><span>@gmail.com</span></a>
+  <div class="links">
+    <a class="solid" href="cv_loicsaillant.pdf" download="cv_loicsaillant.pdf" data-goatcounter-click="cv-download-contact" data-goatcounter-title="CV download (contact)">Download CV ↓</a>
+    <a data-goatcounter-click="linkedin" href="https://www.linkedin.com/in/lo%C3%AFc-saillant-dev" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a data-goatcounter-click="github" href="https://github.com/dev-loic" target="_blank" rel="noopener">GitHub ↗</a>
+    <a data-goatcounter-click="x" href="https://x.com/dev_loic" target="_blank" rel="noopener">X ↗</a>
   </div>
 </section>
-
-<div class="wrap">
-  <section class="contact" id="contact">
-    <div class="label" style="margin-bottom:18px">Contact</div>
-    <h2>Building a mobile app?<br><a href="mailto:loic.saillant.dev@gmail.com" data-goatcounter-click="email">Write to me.</a></h2>
-    <p style="margin:-14px 0 28px;font:15px var(--mono);color:var(--muted)">loic.saillant.dev@gmail.com</p>
-    <div class="links">
-      <a class="btn" href="cv_loicsaillant.pdf" download="cv_loicsaillant.pdf" data-goatcounter-click="cv-download-contact" data-goatcounter-title="CV download (contact)">Download CV</a>
-      <a class="ghost" data-goatcounter-click="linkedin" href="https://www.linkedin.com/in/lo%C3%AFc-saillant-dev" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="ghost" data-goatcounter-click="github" href="https://github.com/dev-loic" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="ghost" data-goatcounter-click="x" href="https://x.com/dev_loic" target="_blank" rel="noopener">X ↗</a>
-    </div>
-  </section>
-</div>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Loïc Saillant</span><span>Engineer · French native, English speaker</span></div></footer>
+<footer class="px"><span>© 2026 Loïc Saillant</span><span>Engineer · French native, English speaker</span></footer>
 
 <script>
-const top=document.getElementById('top');
-addEventListener('scroll',()=>top.classList.toggle('scrolled',scrollY>8),{passive:true});
-const rvs=[...document.querySelectorAll('.rv')];
-const show=el=>el.classList.add('in');
-if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-  document.documentElement.classList.add('anim');
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px -8% 0px'});
-  rvs.forEach(el=>{ if(el.getBoundingClientRect().top<innerHeight) show(el); else io.observe(el); });
-  setTimeout(()=>rvs.forEach(show),2500);
-}
+(()=>{
+  const root=document.documentElement;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('js');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.add('ready')));
+
+  /* nav: hide on scroll down, show on scroll up */
+  const nav=document.querySelector('.nav'); let lastY=scrollY;
+  addEventListener('scroll',()=>{const y=scrollY; nav.classList.toggle('away',y>120&&y>lastY); lastY=y;},{passive:true});
+
+  /* reveal */
+  const rvs=[...document.querySelectorAll('.rv')];
+  if('IntersectionObserver' in window && !reduce){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
+    rvs.forEach(el=>io.observe(el));
+    setTimeout(()=>rvs.forEach(el=>el.classList.add('in')),4000);
+  } else rvs.forEach(el=>el.classList.add('in'));
+
+  /* sticky device: one block per experience, auto-playing its screens */
+  const chapters=[...document.querySelectorAll('.chapter')];
+  const stage=document.querySelector('.stage');
+  const vids=[...stage.querySelectorAll('video')];
+  const segBox=document.getElementById('segs');
+  const labels=[['Toongether','Home'],['Toongether','Editor'],['Wizz','Chat']];
+  const lab=document.getElementById('stageLabel'), num=document.getElementById('stageNum');
+  const desktop=()=>getComputedStyle(stage).display!=='none';
+  let cur=-1, list=[], pos=0, raf=0;
+  function show(k){
+    pos=k; const vi=list[k];
+    vids.forEach((v,j)=>{
+      if(j===vi){ v.preload='auto'; v.loop=list.length===1; v.currentTime=0; v.classList.add('on'); v.play().catch(()=>{}); }
+      else { v.classList.remove('on'); setTimeout(()=>{ if(list[pos]!==j) v.pause(); },700); }
+    });
+    lab.innerHTML='<b>'+labels[vi][0]+'</b> · '+labels[vi][1];
+    num.textContent=list.length>1?(k+1)+'/'+list.length:'';
+    [...segBox.children].forEach((b,j)=>b.querySelector('i').style.setProperty('--p',j<k?1:0));
+    const nxt=list[(k+1)%list.length]; if(nxt!==vi) vids[nxt].preload='auto';
+  }
+  function setChapter(i){
+    if(i===cur) return; cur=i;
+    chapters.forEach((c,j)=>c.classList.toggle('on',j===i));
+    stage.style.setProperty('--glow',chapters[i].dataset.glow);
+    list=chapters[i].dataset.videos.split(',').map(Number);
+    segBox.innerHTML=list.length>1?list.map((v,j)=>'<button type="button" tabindex="-1" aria-label="'+labels[v][1]+'"><span><i></i></span></button>').join(''):'';
+    segBox.style.visibility=list.length>1?'visible':'hidden';
+    [...segBox.children].forEach((b,j)=>b.addEventListener('click',()=>show(j)));
+    show(0);
+  }
+  vids.forEach((v,j)=>v.addEventListener('ended',()=>{ if(list[pos]===j && list.length>1) show((pos+1)%list.length); }));
+  (function tick(){
+    const v=vids[list[pos]], bar=segBox.children[pos];
+    if(v && bar && v.duration) bar.querySelector('i').style.setProperty('--p',(v.currentTime/v.duration).toFixed(4));
+    raf=requestAnimationFrame(tick);
+  })();
+  function onScroll(){
+    if(!desktop()) return;
+    /* switch when the chapter's header (icon row) reaches the top of the phone */
+    const line=stage.querySelector('.phone').getBoundingClientRect().top+40; let active=0;
+    chapters.forEach((c,j)=>{ if(c.querySelector('.k').getBoundingClientRect().top<line) active=j; });
+    setChapter(active);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  onScroll();
+  if(!desktop()) chapters.forEach(c=>c.classList.add('on'));
+
+  /* mobile: inline videos play only when visible */
+  const inl=[...document.querySelectorAll('.inline-phone video')];
+  if('IntersectionObserver' in window){
+    const vio=new IntersectionObserver(es=>es.forEach(e=>{
+      if(desktop()) return;
+      if(e.isIntersecting){ e.target.preload='auto'; e.target.play().catch(()=>{}); } else e.target.pause();
+    }),{threshold:.35});
+    inl.forEach(v=>vio.observe(v));
+  }
+
+  /* terminal: type once when visible */
+  const term=document.getElementById('term');
+  if(term && !reduce && 'IntersectionObserver' in window){
+    const full=term.innerHTML;
+    const lines=full.split('\n');
+    term.innerHTML='<span class="caret"></span>';
+    const tio=new IntersectionObserver(es=>{
+      if(!es[0].isIntersecting) return; tio.disconnect();
+      const cmd=lines[0].replace(/<[^>]+>/g,'').slice(2); /* "hermes cron list" */
+      let k=0;
+      const typeCmd=()=>{
+        term.innerHTML='<span class="p">$</span> '+cmd.slice(0,k)+'<span class="caret"></span>';
+        if(k++<cmd.length) setTimeout(typeCmd,45+Math.random()*50);
+        else setTimeout(()=>printOut(1),380);
+      };
+      const printOut=n=>{
+        term.innerHTML=lines.slice(0,n+1).join('\n')+(n+1<lines.length?'\n<span class="caret"></span>':'');
+        if(n+1<lines.length) setTimeout(()=>printOut(n+1),n%2?110:60);
+      };
+      typeCmd();
+    },{threshold:.5});
+    tio.observe(term);
+  }
+})();
 </script>
 <script data-goatcounter="https://loic-dev.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
