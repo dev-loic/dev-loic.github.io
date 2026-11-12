@@ -497,7 +497,7 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
   if('IntersectionObserver' in window){
     const vio=new IntersectionObserver(es=>es.forEach(e=>{
       if(desktop()) return;
-      if(e.isIntersecting){ e.target.preload='auto'; e.target.play().catch(()=>{}); } else e.target.pause();
+      if(e.isIntersecting){ e.target.preload='auto'; e.target.play().catch(()=>{ /* autoplay blocked (e.g. Low Power Mode): a frozen poster adds nothing, hide the mockup */ const ph=e.target.closest('.inline-phone'); if(ph) ph.style.display='none'; vio.unobserve(e.target); }); } else e.target.pause();
     }),{threshold:.35});
     inl.forEach(v=>vio.observe(v));
   }
