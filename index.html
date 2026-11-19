@@ -5,12 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Loïc Saillant · Mobile engineer</title>
 <meta name="description" content="Loïc Saillant, mobile engineer. 7+ years shipping iOS apps used by millions: Wizz, Toongether, CANAL+, Taxis G7.">
+<meta name="author" content="Loïc Saillant">
+<link rel="canonical" href="https://dev-loic.github.io/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://dev-loic.github.io/">
+<meta property="og:site_name" content="Loïc Saillant">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Loïc Saillant · Mobile engineer">
 <meta property="og:description" content="7+ years shipping consumer iOS apps. Wizz (200K to 1M+ DAU), Toongether (Lead iOS, gen-AI comics).">
 <meta property="og:image" content="https://dev-loic.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Loïc Saillant, mobile engineer">
+<meta property="profile:first_name" content="Loïc">
+<meta property="profile:last_name" content="Saillant">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@dev_loic">
+<meta name="twitter:site" content="@dev_loic">
 <meta name="theme-color" content="#0b0b0b">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://dev-loic.github.io/",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Loïc Saillant",
+    "jobTitle": "Mobile engineer",
+    "description": "iOS engineer with 7+ years shipping consumer apps: Wizz, Toongether, CANAL+, Taxis G7.",
+    "url": "https://dev-loic.github.io/",
+    "email": "mailto:loic.saillant.dev@gmail.com",
+    "address": { "@type": "PostalAddress", "addressCountry": "FR" },
+    "knowsAbout": ["iOS", "Swift", "SwiftUI", "UIKit", "Objective-C", "Mobile app development", "CI/CD"],
+    "knowsLanguage": ["fr", "en"],
+    "sameAs": [
+      "https://www.linkedin.com/in/lo%C3%AFc-saillant-dev",
+      "https://github.com/dev-loic",
+      "https://x.com/dev_loic"
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -126,8 +164,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hi);outline-offset:
 .row .yr{font:500 12px/1.9 var(--mono);color:var(--muted)}
 .row img,.row .badge{width:40px;height:40px;border-radius:10px}
 .row .badge{display:grid;place-items:center;background:var(--ink);color:var(--bg);font:700 16px var(--sans);font-stretch:125%}
-.row h4{margin:0;font-weight:700;font-stretch:112%;font-size:22px;letter-spacing:-.02em;line-height:1.15;transition:color .2s}
-.row:hover h4{color:var(--hi)}
+.row h3{margin:0;font-weight:700;font-stretch:112%;font-size:22px;letter-spacing:-.02em;line-height:1.15;transition:color .2s}
+.row:hover h3{color:var(--hi)}
 .row .where{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
 .row .as{display:inline-block;margin-top:10px;font:500 12px var(--mono);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:2px;transition:color .2s,border-color .2s}
 .row .as:hover{color:var(--hi);border-color:var(--hi)}
@@ -142,7 +180,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hi);outline-offset:
 .principles article{padding:26px 28px 0 0}
 .principles article+article{padding-left:28px;border-left:1px solid var(--line)}
 .principles .n{font:500 12px var(--mono);color:var(--hi)}
-.principles h4{margin:30px 0 14px;font-weight:700;font-stretch:118%;font-size:clamp(22px,1.9vw,30px);line-height:1.02;letter-spacing:-.03em}
+.principles h3{margin:30px 0 14px;font-weight:700;font-stretch:118%;font-size:clamp(22px,1.9vw,30px);line-height:1.02;letter-spacing:-.03em}
 .principles p{margin:0;font-size:15px;color:var(--muted)}
 
 /* ── agent (inverted interruption) ── */
@@ -223,7 +261,7 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
   .agent-grid{grid-template-columns:1fr}
   .principles{grid-template-columns:1fr}
   .principles article,.principles article+article{padding:22px 0 0;border-left:0;margin-top:28px;border-top:1px solid var(--line)}
-  .principles h4{margin-top:18px}
+  .principles h3{margin-top:18px}
   .index,.how,.agent{padding-top:80px;padding-bottom:80px}
   .contact{padding-top:96px}
 }
@@ -344,15 +382,15 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
     <div class="group">In the works</div>
     <div class="row">
       <span class="yr">2026 —</span>
-      <img class="ic" src="assets/close_icon.svg" alt="Close app icon">
-      <div><span class="tag">Building</span><h4>Close</h4><span class="where">iPhone app</span></div>
+      <img class="ic" src="assets/close_icon.svg" alt="Close app icon" width="40" height="40" loading="lazy">
+      <div><span class="tag">Building</span><h3>Close</h3><span class="where">iPhone app</span></div>
       <p>An app to stay close to your friends. After a coffee or a call, you talk for 20 seconds; Close remembers what matters to them (birthdays, life events, small details) and every Monday tells you who to reach out to, and why. You still write the messages yourself.</p>
       <span class="st">SwiftUI<br>Cloudflare Workers<br>Claude API</span>
     </div>
     <div class="row" id="giftly">
       <span class="yr">2025 —</span>
-      <img class="ic" src="assets/giftly_icon.svg" alt="Giftly icon">
-      <div><span class="tag">Live</span><h4>Giftly</h4><span class="where">Web app</span><a class="as" href="https://giftly.fr/" target="_blank" rel="noopener" data-goatcounter-click="giftly">giftly.fr ↗</a></div>
+      <img class="ic" src="assets/giftly_icon.svg" alt="Giftly icon" width="40" height="40" loading="lazy">
+      <div><span class="tag">Live</span><h3>Giftly</h3><span class="where">Web app</span><a class="as" href="https://giftly.fr/" target="_blank" rel="noopener" data-goatcounter-click="giftly">giftly.fr ↗</a></div>
       <p>Gift lists for families and friends. Create an event (Christmas, a birthday), invite your people, and everyone shares their wishlist; guests reserve a gift so nobody buys the same thing twice.</p>
       <span class="st">Next.js<br>Firebase</span>
     </div>
@@ -360,21 +398,21 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
     <div class="row">
       <span class="yr">2021</span>
       <div class="badge ic">T</div>
-      <div><h4>Tonydoor</h4><span class="where">Co-founder</span></div>
+      <div><h3>Tonydoor</h3><span class="where">Co-founder</span></div>
       <p>SaaS that turned meeting recordings into transcripts and AI-picked highlights. I built the Vue.js front end and a Python back end on AWS Lambda.</p>
       <span class="st">Vue.js<br>Python<br>AWS Lambda</span>
     </div>
     <div class="row" id="mycanal">
       <span class="yr">2019 — 21</span>
-      <img class="ic" src="assets/canal_icon.jpg" alt="CANAL+ app icon">
-      <div><h4>CANAL+</h4><span class="where">Fabernovel</span><a class="as" href="https://apps.apple.com/app/id694580816" target="_blank" rel="noopener" data-goatcounter-click="appstore-canal">App Store ↗</a></div>
+      <img class="ic" src="assets/canal_icon.jpg" alt="CANAL+ app icon" width="40" height="40" loading="lazy">
+      <div><h3>CANAL+</h3><span class="where">Fabernovel</span><a class="as" href="https://apps.apple.com/app/id694580816" target="_blank" rel="noopener" data-goatcounter-click="appstore-canal">App Store ↗</a></div>
       <p>iOS and tvOS video app for CANAL+. Moved the settings to the new app architecture and worked with AVFoundation, in Swift alongside Objective-C.</p>
       <span class="st">Swift · Obj-C<br>tvOS<br>AVFoundation</span>
     </div>
     <div class="row" id="g7">
       <span class="yr">2019 — 21</span>
-      <img class="ic" src="assets/g7_icon.jpg" alt="G7 Taxi icon">
-      <div><h4>Taxis G7</h4><span class="where">Fabernovel</span><a class="as" href="https://apps.apple.com/app/id402196027" target="_blank" rel="noopener" data-goatcounter-click="appstore-g7">App Store ↗</a></div>
+      <img class="ic" src="assets/g7_icon.jpg" alt="G7 Taxi icon" width="40" height="40" loading="lazy">
+      <div><h3>Taxis G7</h3><span class="where">Fabernovel</span><a class="as" href="https://apps.apple.com/app/id402196027" target="_blank" rel="noopener" data-goatcounter-click="appstore-g7">App Store ↗</a></div>
       <p>About 2M monthly users. Migrated a legacy Objective-C codebase to a clean Swift architecture with a senior iOS developer, then shipped new features on it.</p>
       <span class="st">Obj-C → Swift</span>
     </div>
@@ -385,10 +423,10 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 <section class="how px" id="how">
   <div class="sec-title rv"><h2>How I work</h2></div>
   <div class="principles rv">
-    <article><span class="n">01</span><h4>Ship small, then measure</h4><p>At Wizz each feature started from a KPI goal and went out behind an A/B test. Plenty were killed. I still work that way: release, read the numbers, keep or cut.</p></article>
-    <article><span class="n">02</span><h4>Own the release pipeline</h4><p>I've written the CI/CD and the CLIs on my last two teams, so a small team can get from merge to TestFlight to App Store review without manual steps.</p></article>
-    <article><span class="n">03</span><h4>Native where it counts</h4><p>Swift and UIKit for the parts users touch most, like a feed that has to scroll without a hitch. SwiftUI and shared modules where they save time.</p></article>
-    <article><span class="n">04</span><h4>Past the app boundary</h4><p>I like building tools and automating anything I end up doing twice: CLIs for my teams, a Claude Code skill for releases, agent jobs for my own mornings. When a feature needed it, I've also written some backend code in JavaScript, and I taught Java at Le Cnam.</p></article>
+    <article><span class="n">01</span><h3>Ship small, then measure</h3><p>At Wizz each feature started from a KPI goal and went out behind an A/B test. Plenty were killed. I still work that way: release, read the numbers, keep or cut.</p></article>
+    <article><span class="n">02</span><h3>Own the release pipeline</h3><p>I've written the CI/CD and the CLIs on my last two teams, so a small team can get from merge to TestFlight to App Store review without manual steps.</p></article>
+    <article><span class="n">03</span><h3>Native where it counts</h3><p>Swift and UIKit for the parts users touch most, like a feed that has to scroll without a hitch. SwiftUI and shared modules where they save time.</p></article>
+    <article><span class="n">04</span><h3>Past the app boundary</h3><p>I like building tools and automating anything I end up doing twice: CLIs for my teams, a Claude Code skill for releases, agent jobs for my own mornings. When a feature needed it, I've also written some backend code in JavaScript, and I taught Java at Le Cnam.</p></article>
   </div>
 </section>
 
